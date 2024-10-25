@@ -1,0 +1,14 @@
+@media print {
+    body * {
+        visibility: hidden;
+        scroll-behavior: smooth;
+    }
+    #print-content, #print-content * {
+        visibility: visible;
+    }
+    #print-content {
+        position: absolute;
+        left: 10%;
+        top: 0;
+    }
+}
