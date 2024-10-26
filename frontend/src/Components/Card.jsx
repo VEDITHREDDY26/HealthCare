@@ -11,22 +11,22 @@ const Card = ({ doctor }) => {
   };
   return (
     
-      <div className="m-3 w-96 h-auto bg-slate-200 flex justify-around items-center leading-8 rounded-md shadow-2xl">
+      <div className="m-3 w-96 h-auto bg-slate-200 flex justify-around items-center leading-8 rounded-md shadow-2xl cursor-pointer hover:shadow-slate-400">
         <div className="w-36 h-40">
           <img className="p-3 rounded-full mr-12 mt-2" src={avatar} alt="Doctor Avatar" />
         </div>
         <div>
           <div className="mt-2">
             <div className="flex text-sm">
-              <p className="font-bold">Name</p>
+              <p className="font-bold text-sky-700">Name</p>
               <p> : {doctor.name}</p>
             </div>
             <div className="flex text-sm">
-              <p className="font-bold">Specialization</p>
+              <p className="font-bold text-sky-700">Specialization</p>
               <p> : {doctor.specialization}</p>
             </div>
             <div className="flex text-sm">
-              <p className="font-bold">Cost-Per-Booking</p>
+              <p className="font-bold text-sky-700">Cost-Per-Booking</p>
               <p> : ₹{doctor.costPerVisit}</p>
             </div>
           </div>

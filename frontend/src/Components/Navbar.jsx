@@ -45,7 +45,8 @@ const Navbar = () => {
 
   return (
     // <div className=' sticky top-0 z-50 drop-shadow-lg  flex justify-around items-center w-auto h-20 bg-slate-200 from-indigo-100 from-10% via-sky-200 via-30% to-emerald-100'>
-          <div className=' sticky top-0 z-50 drop-shadow-lg  flex justify-around items-center w-auto h-20 '>
+          <div className=' sticky top-0 z-50 drop-shadow-lg  flex justify-around items-center w-auto h-20 bg-gradient-to-r from-pink-200 from-15% via-purple-300 via-45% to-indigo-200 to-85%
+'>
 
       <ToastContainer/>
       <div className='flex justify-center items-center mr-10'>

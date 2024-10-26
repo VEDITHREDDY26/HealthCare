@@ -64,6 +64,7 @@ const AddAdmin = () => {
                 placeholder="username"
                 value={userName}
                 onChange={(e) => setUserName(e.target.value)}
+                required
               />
             </div>
             <div className="flex flex-col justify-center items-center gap-2">
@@ -74,6 +75,7 @@ const AddAdmin = () => {
                 placeholder="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                required
               />
             </div>
             <div className="flex flex-col justify-center items-center gap-2">
@@ -84,6 +86,7 @@ const AddAdmin = () => {
                 placeholder="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                required
               />
             </div>
             <button
