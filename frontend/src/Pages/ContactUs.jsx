@@ -5,7 +5,7 @@ const ContactUs = () => {
   return (
     // <div className="bg-gradient-to-r h-screen from-indigo-100 from-10% via-sky-200 via-30% to-emerald-100">
      <div className="bg-gradient-to-r h-screen ">
-      <h1 className="text-3xl text-center  text-blue-600 font-semibold">
+      <h1 className="text-3xl text-center  text-blue-600 font-semibold mt-[70px]">
         Contact Us
       </h1>
       <div className="flex justify-center items-center gap-x-40 w-full h-96 mt-20">
@@ -32,11 +32,20 @@ const ContactUs = () => {
           <div className="flex justify-start items-center gap-20 mt-10">
             <Phone color="#00b3ff" />
             <div>
-              Call us<br></br>
-              <p className="underline underline-offset-1 cursor-pointer hover:text-blue-600">
-                +91 9177337261
-              </p>
-            </div>
+  Call us<br />
+  <p className="cursor-pointer">
+    Praneeth Reddy : 
+    <span className="underline underline-offset-1 hover:text-blue-600 cursor-pointer"> +91 9177337261</span>
+    <br />
+    Srilatha : 
+    <span className="underline underline-offset-1 hover:text-blue-600 cursor-pointer"> +91 8977040409</span>
+    <br />
+    Vedith Reddy : 
+    <span className="underline underline-offset-1 hover:text-blue-600 cursor-pointer"> +91 7675988756</span>
+    <br />
+  </p>
+</div>
+ 
           </div>
           <hr className="bg-slate-400 h-[1px] mt-4" />
           <div className="flex justify-center items-center gap-20 mt-10">
