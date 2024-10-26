@@ -26,7 +26,7 @@ const BookAppointment = () => {
             doctors.map((doctor) => (
                 <Card key={doctor._id} doctor={doctor} />
             ))
-        ):(<p>No Doctors Available</p>)}
+        ):(<p className='bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 p-4 rounded-md'>No Doctors Available</p>)}
     </div>
     </>
   )

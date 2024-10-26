@@ -28,7 +28,6 @@ import Card from "./Components/Card";
 import PrescriptionList from "./Components/PrescriptionList";
 import TodayAppointments from "./Components/TodayAppointments";
 
-
 function App() {
   return (
     <>
@@ -66,6 +65,7 @@ function App() {
             <Route path="addPrescription/:id" element={<AddPrescription />} />
             <Route path="getAppointments" element={<YourAppointments />} />
             <Route path="profile" element={<DoctorProfile />} />
+
           </Route>
         </Route>
       </Routes>

@@ -49,7 +49,7 @@ import { useNavigate } from 'react-router-dom';
   
       return (
           <div className="m-5">
-              <h1 className="text-left font-semibold text-2xl flex gap-3 items-center">
+              <h1 className="text-left font-semibold text-2xl flex gap-3 items-center bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 rounded-md p-4 text-sky-800">
                   Your Prescriptions
               </h1>
               <div className="container mx-auto mt-4">

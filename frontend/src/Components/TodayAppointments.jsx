@@ -66,7 +66,7 @@ const TodayAppointments = () => {
       
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-6">Today's Appointments</h1>
+      <h1 className="text-3xl font-bold mb-6 bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 p-2 rounded text-sky-700">Today's Appointments</h1>
       {appointments.length === 0 ? (
         <p>No appointments for today.</p>
       ) : (

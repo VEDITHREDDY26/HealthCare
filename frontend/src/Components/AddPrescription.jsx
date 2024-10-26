@@ -88,7 +88,7 @@ const AddPrescription = () => {
       <ToastContainer />
       {loading ? <Loading /> : (
         <>
-          <h2 className="text-2xl font-bold mb-4 text-center">Add Prescription</h2>
+          <h2 className="text-2xl font-bold mb-4 text-center ">Add Prescription</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label className="block text-gray-700">Patient Name</label>
