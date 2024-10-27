@@ -1,8 +1,11 @@
 import React from "react";
 import photo from "../assets/top_service.png"; // replace with actual image
 import doc_services from "../assets/doctor.png"; // replace with actual image
-import feature1_img from "../assets/feature_1.svg";
-import feature2_img from "../assets/feature_2.svg";
+import feature1_img from "../assets/home_pngs/tablets.png";
+import feature2_img from "../assets/home_pngs/stethoscope_906273.png"
+import feature3_img from "../assets/home_pngs/thermometer_7858308.png";
+import feature4_img from "../assets/home_pngs/injection_4877112.png"
+
 
 const AboutUs = () => {
   return (
@@ -56,13 +59,13 @@ const AboutUs = () => {
               {/* Service 1 */}
 
               <div className="flex items-center space-x-4">
-                <div className="p-4 bg-gray-100 rounded-full  flex items-center justify-center w-25 h-23 ">
-                  <img
-                    src={feature1_img} // Update this path to the actual SVG location
-                    alt="Icon"
-                    className="w-12 h-12"
-                  />
-                </div>
+              <div className="flex items-center justify-center">
+                    <img
+                      src={feature2_img} // Update this path to the actual SVG location
+                      alt="Icon"
+                      className="w-[200px] h-[80px] "
+                    />
+                  </div>
 
                 <div>
                   <h2 className="text-xl font-semibold">Quality Healthcare</h2>
@@ -75,13 +78,13 @@ const AboutUs = () => {
 
               {/* Service 2 */}
               <div className="flex items-center space-x-4">
-              <div className="p-4 bg-gray-100 rounded-full  flex items-center justify-center w-25 h-23 ">
-                  <img
-                    src={feature2_img} // Update this path to the actual SVG location
-                    alt="Icon"
-                    className="w-12 h-12"
-                  />
-                </div>
+<div className="flex items-center justify-center">
+                    <img
+                      src={feature1_img} // Update this path to the actual SVG location
+                      alt="Icon"
+                      className="w-[200px] h-[80px] "
+                    />
+                  </div>
                 <div>
                   <h2 className="text-xl font-semibold">
                     Telemedicine Services
@@ -109,13 +112,13 @@ const AboutUs = () => {
             <div className="flex flex-col space-y-12 w-full lg:w-1/3">
               {/* Service 3 */}
               <div className="flex items-center space-x-4">
-              <div className="p-4 bg-gray-100 rounded-full  flex items-center justify-center w-25 h-23 ">
-                  <img
-                    src={feature1_img} // Update this path to the actual SVG location
-                    alt="Icon"
-                    className="w-12 h-12"
-                  />
-                </div>
+              <div className="flex items-center justify-center">
+                    <img
+                      src={feature3_img} // Update this path to the actual SVG location
+                      alt="Icon"
+                      className="w-[200px] h-[80px] "
+                    />
+                  </div> 
                 <div>
                   <h2 className="text-xl font-semibold">Preventive Care</h2>
                   <p className="text-gray-500">
@@ -127,13 +130,13 @@ const AboutUs = () => {
 
               {/* Service 4 */}
               <div className="flex items-center space-x-4">
-              <div className="p-4 bg-gray-100 rounded-full  flex items-center justify-center w-25 h-23 ">
-                  <img
-                    src={feature2_img} // Update this path to the actual SVG location
-                    alt="Icon"
-                    className="w-12 h-12"
-                  />
-                </div>
+              <div className="flex items-center justify-center">
+                    <img
+                      src={feature4_img} // Update this path to the actual SVG location
+                      alt="Icon"
+                      className="w-[200px] h-[80px] "
+                    />
+                  </div>
                 <div>
                   <h2 className="text-xl font-semibold">Emergency Services</h2>
                   <p className="text-gray-500">
