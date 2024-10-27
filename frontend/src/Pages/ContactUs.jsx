@@ -4,7 +4,7 @@ import React from "react";
 const ContactUs = () => {
   return (
     // <div className="bg-gradient-to-r h-screen from-indigo-100 from-10% via-sky-200 via-30% to-emerald-100">
-     <div className="bg-gradient-to-r h-screen ">
+     <div className="bg-gradient-to-r h-screen  h-[calc(100vh-3.1*4.7rem)]">
       <h1 className="text-3xl text-center  text-blue-600 font-semibold mt-[70px]">
         Contact Us
       </h1>
