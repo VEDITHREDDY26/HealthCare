@@ -52,7 +52,8 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex justify-center items-center gap-10 mt-7 min-h-screen">
+    // <div className="flex justify-center items-center gap-10 mt-7 min-h-screen">
+    <div className="flex justify-center items-center gap-10 h-[calc(100vh-2*5rem)] mt-6 ">
       <ToastContainer /> {/* Toast container for notifications */}
       <img className="w-1/3 h-auto" src={login} alt="Login" />
       <div className="flex flex-col justify-center items-center">
