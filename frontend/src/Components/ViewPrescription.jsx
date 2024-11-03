@@ -57,7 +57,7 @@ const ViewPrescription = () => {
         <div className='mt-6 w-full h-full flex justify-center items-center flex-col gap-4'>
           <p className=''><b>Patient Name</b> : {prescriptionData.patientName}</p>
           
-          <p><b>Age</b> : {prescriptionData.age}</p>
+          {/* <p><b>Age</b> : {prescriptionData.age}</p> */}
           <p><b>Cause</b> : {prescriptionData.cause}</p>
           <p className='text-left mr-52 font-bold'>Medications :</p>
           

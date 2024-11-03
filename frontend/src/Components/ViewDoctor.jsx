@@ -104,26 +104,22 @@ const ViewDoctor = () => {
             About <span className="text-blue-500 ml-2 font-semibold">{details.name}</span>
           </p>
           <p className="mt-6 text-sm text-slate-600">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga,
-            <br />
-            optio expedita impedit consequatur non soluta ad repellat ea ipsum
-            <br />
-            rerum modi iste corrupti veniam aut recusandae sit fugiat et. Cum.
-            <br />
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores
-            <br />
-            saepe, accusamus provident quia beatae totam atque laborum officiis
-            <br />
-            quaerat voluptates recusandae iure? Obcaecati voluptate incidunt
-            <br />
-            doloribus rerum, libero voluptatibus laborum!
+          Our doctors are dedicated to fostering a supportive and compassionate environment, 
+          <br />where open communication and trust are prioritized. They are well-versed in the 
+          <br/>latest medical advancements and best practices, allowing them to provide effective 
+          <br/>treatment across various specialties.<br/>
+
+          We believe in a holistic approach to health, focusing not only on treating illness but also
+          <br/> on promoting overall wellness through preventive care and education. Whether you are 
+          <br/>seeking routine check-ups, specialized treatment, or guidance on maintaining a healthy 
+          <br/>lifestyle, our physicians are here to support you every step of the way.
           </p>
         </div>
       </div>
       <div className="w-72 h-64 bg-slate-200 shadow-xl mr-28 mt-14 rounded-xl">
         <div className="flex justify-center items-center gap-20 mt-5">
           <h1 className="text-lg font-semibold">Normal Cost</h1>
-          <p>Rs{details.costPerVisit}</p>
+          <p>Rs.{details.costPerVisit}</p>
         </div>
         <div className="flex flex-col justify-center items-center">
           <p className="my-7">Choose the Time Slot:</p>
