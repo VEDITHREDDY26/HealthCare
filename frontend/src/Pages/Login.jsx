@@ -71,7 +71,8 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center gap-10 mt-7 h-screen">
+    // <div className="flex justify-center items-center gap-10 mt-7 h-screen">
+    <div className="flex justify-center items-center gap-10 mt-7 h-[calc(100vh-2*5rem)]">
       <ToastContainer />
       <img className="w-1/3 h-auto" src={login} alt="Login" />
       <div className="flex flex-col justify-center items-center">
