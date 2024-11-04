@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import avatar from '../assets/doc.avif'
 const DoctorsList = () => {
   const [doctor, setDoctor] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -34,23 +34,37 @@ const DoctorsList = () => {
     }
   };
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  if (loading) return <p className="text-center text-blue-600 font-semibold">Loading...</p>;
+  if (error) return <p className="text-center text-red-600 font-semibold">Error: {error}</p>;
 
   return (
-    <div className="flex flex-col items-center">
-    {doctor ? (
-      <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
-        <h2 className="text-2xl font-bold mb-2 text-center text-gray-800">{doctor.name}</h2>
-        <p className="text-lg text-gray-700 mb-2"><strong>Specialization:</strong> {doctor.specialization}</p>
-        <p className="text-lg text-gray-700 mb-2"><strong>Cost per Visit:</strong> ₹{doctor.costPerVisit}</p>
-      </div>
-    ) : (
-      <p className="text-center text-gray-600">No doctor found.</p>
-    )}
-  </div>
-
-
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-pink-200 to-blue-300">
+      {doctor ? (
+        <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full transform hover:scale-105 transition-transform duration-300 ease-in-out">
+          <div className="flex justify-center mb-4">
+            <img
+              src={avatar|| "https://via.placeholder.com/150"}
+              alt={`${doctor.name}'s profile`}
+              className="w-32 h-32 rounded-full shadow-lg object-cover"
+            />
+          </div>
+          <h2 className="text-3xl font-bold text-center text-black-800 mb-4 font-mono">{doctor.name}</h2>
+          <p className="text-center text-gray-600 italic mb-4">
+            Dedicated to providing compassionate care and using a patient-centered approach to ensure the best outcomes.
+          </p>
+          <div className="space-y-3 text-lg text-gray-700">
+            <p className="flex items-center justify-center space-x-2">
+              <strong className='text-blue-900'>Specialization : </strong> {doctor.specialization}
+            </p>
+            <p className="flex items-center justify-center space-x-2">
+              <strong className='text-blue-900'>Cost per Visit : </strong> ₹{doctor.costPerVisit}
+            </p>
+          </div>
+        </div>
+      ) : (
+        <p className="text-center text-gray-600">No doctor found.</p>
+      )}
+    </div>
   );
 };
 
