@@ -1,6 +1,4 @@
-
 /* eslint-disable react/no-unescaped-entities */
-
 
 import React, { useContext, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
@@ -9,16 +7,16 @@ import Loading from "./Loading";
 import { Auth } from "../Contexts/AuthContext";
 import { useParams } from "react-router-dom";
 
-
 const AddPrescription = () => {
   const [medications, setMedications] = useState([{ name: "", dosage: "" }]);
   const [patientName, setPatientName] = useState("");
   const [age, setAge] = useState("");
   const [cause, setCause] = useState("");
   const [loading, setLoading] = useState(false);
-  const {id} = useParams();
+  const [specialInstructions, setSpecialInstructions] = useState(""); // This state is for special instructions
+  const { id } = useParams();
   
-  const {user} = useContext(Auth)
+  const { user } = useContext(Auth)
 
   const handleInputChange = (index, event) => {
     const values = [...medications];
@@ -46,11 +44,9 @@ const AddPrescription = () => {
       medicines: medications.map(med => med.name),
       dosages: medications.map(med => med.dosage),
       cause,
+      specialInstructions
     };
 
-   
-
-    // console.log(prescriptionData);
     try {
       const response = await fetch(`http://localhost:3000/addPrescription/${id}`, { 
         method: 'POST',
@@ -80,7 +76,7 @@ const AddPrescription = () => {
     setAge("");
     setMedications([{ name: "", dosage: "" }]);
     setCause("");
-
+    setSpecialInstructions(""); // Reset specialInstructions here
   };
 
   return (
@@ -88,7 +84,7 @@ const AddPrescription = () => {
       <ToastContainer />
       {loading ? <Loading /> : (
         <>
-          <h2 className="text-2xl font-bold mb-4 text-center ">Add Prescription</h2>
+          <h2 className="text-2xl font-bold mb-4 text-center">Add Prescription</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label className="block text-gray-700">Patient Name</label>
@@ -110,8 +106,16 @@ const AddPrescription = () => {
                 required
               />
             </div>
-            
-
+            <div className="mb-4">
+              <label className="block text-gray-700">Cause</label>
+              <input
+                type="text"
+                value={cause}
+                onChange={(e) => setCause(e.target.value)}
+                className="w-full p-2 border border-gray-300 rounded mt-1"
+                required
+              />
+            </div>
             {medications.map((medication, index) => (
               <div key={index} className="mb-4">
                 <div className="flex">
@@ -159,8 +163,8 @@ const AddPrescription = () => {
             <div className="mb-4">
               <label className="block text-gray-700">Special Instructions</label>
               <textarea
-                value={cause}
-                onChange={(e) => setCause(e.target.value)}
+                value={specialInstructions}
+                onChange={(e) => setSpecialInstructions(e.target.value)} 
                 className="w-full p-2 border border-gray-300 rounded mt-1"
                 rows="4"
               ></textarea>
@@ -179,4 +183,3 @@ const AddPrescription = () => {
 };
 
 export default AddPrescription;
-
