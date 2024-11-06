@@ -1,6 +1,8 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import StressBusterGame from './StressBusterGame';
+import FoodMatchGame from './PatientGame/FoodMatchGame';
+
 
 
 const quotes = [
@@ -28,7 +30,8 @@ const PatientDashboard = () => {
           <p className="text-gray-600 italic">{quote}</p>
         </div>
         <br />
-        <StressBusterGame/>
+        {/* <StressBusterGame/> */}
+        <FoodMatchGame/>
         <Outlet />
       </div>
     </>
