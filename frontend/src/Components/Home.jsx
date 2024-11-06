@@ -78,9 +78,7 @@ const Home = () => {
               Best Care & Better Doctor
             </h1>
             <p className="text-gray-600 mb-6">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis
-              ipsum suspendisse ultrices gravida. Risus commodo viverra.
+            Revolutionize your healthcare experience with a seamless platform connecting patients, providers, and caregivers. From appointment scheduling to health records management, our solution ensures quality care and easy access—whenever and wherever you need it.
             </p>
             <button className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium  " onClick={handleAppointment}>
               MAKE AN APPOINTMENT
