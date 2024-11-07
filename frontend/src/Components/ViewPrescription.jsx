@@ -80,7 +80,7 @@ const ViewPrescription = () => {
           ) : (
             <p className='bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 p-4 rounded-md '>No medications listed.</p>
           )}
-          <p className=''><b>Special Instructions</b> : {prescriptionData.specialInstructions}</p> 
+          {/* <p className=''><b>Special Instructions</b> : {prescriptionData.specialInstructions}</p>  */}
           <button className="w-60 shadow-lg mt-4 hover:bg-blue-800 h-9 bg-blue-500 rounded-full text-white text-lg font-medium" onClick={handlePrint}>
             Print
           </button>
