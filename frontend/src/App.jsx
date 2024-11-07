@@ -27,10 +27,12 @@ import ViewPrescription from "./Components/ViewPrescription";
 import Card from "./Components/Card";
 import PrescriptionList from "./Components/PrescriptionList";
 import TodayAppointments from "./Components/TodayAppointments";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
     <>
+    <ToastContainer/>
       <Navbar />
       <hr className="bg-slate-400 h-[1px]" />
       <Routes>

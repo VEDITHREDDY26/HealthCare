@@ -5,13 +5,14 @@ import feature1_img from "../assets/home_pngs/tablets.png";
 import feature2_img from "../assets/home_pngs/stethoscope_906273.png"
 import feature3_img from "../assets/home_pngs/thermometer_7858308.png";
 import feature4_img from "../assets/home_pngs/injection_4877112.png"
+import { ToastContainer } from "react-toastify";
 
 
 const AboutUs = () => {
   return (
     <>
       {/* ABOUT US SECTION */}
-
+      <ToastContainer/>
       <div className="py-16 bg-white">
         <div className="flex flex-col lg:flex-row justify-between items-center max-w-6xl mx-auto px-6 lg:px-20 space-y-12 lg:space-y-0">
           {/* Left Section (Image) */}

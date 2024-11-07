@@ -1,14 +1,12 @@
 import React, { useContext } from "react";
 import { Cross } from "lucide-react";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";  // No need to import ToastContainer here
 import { Link, useNavigate } from "react-router-dom";
 import { Auth } from "../Contexts/AuthContext";
 
 const Navbar = () => {
-  const { user } = useContext(Auth);
+  const { user, role } = useContext(Auth); // Get user and role from context
   const { dispatch } = useContext(Auth);
-  const { role } = useContext(Auth);
   const nav = useNavigate();
 
   const handleLogout = () => {
@@ -22,8 +20,10 @@ const Navbar = () => {
     if (user) {
       if (role === "Patient") {
         nav("/dashboard/patient/bookAppointment");
-      } else {
-        toast.error("Only Patients have access");
+      } else if (role === "Doctor") {
+        toast.error("Doctors cannot access this page");
+      } else if (role === "Admin") {
+        toast.error("Admins cannot access this page");
       }
     } else {
       nav("/login");
@@ -44,13 +44,12 @@ const Navbar = () => {
 
   return (
     <div className="sticky top-0 z-50 drop-shadow-lg flex items-center w-full h-20 bg-gradient-to-r from-pink-200 via-purple-300 to-indigo-200">
-      <ToastContainer />
+      {/* ToastContainer should be in App.js, not here */}
       <div className="flex items-center pl-10">
         <Cross className="w-16 h-16 cursor-pointer" />
         <Link to="/" className="font-bold text-xl cursor-pointer ml-2">
           Celestial Care
-        </Link>{" "}
-        {/* Increased font size */}
+        </Link>
       </div>
       <ul className="flex justify-center items-center gap-10 flex-grow">
         <Link
@@ -86,9 +85,6 @@ const Navbar = () => {
           </Link>
         ) : null}
       </ul>
-      {/* <button onClick={() => user !== null ? handleLogout() : handleLogin()} className='shadow-lg hover:bg-blue-800 w-20 h-9 bg-blue-500 rounded-full text-white'>
-        {user !== null ? "Log Out" : "Log In"}
-      </button> */}
 
       <button
         onClick={() => (user !== null ? handleLogout() : handleLogin())}

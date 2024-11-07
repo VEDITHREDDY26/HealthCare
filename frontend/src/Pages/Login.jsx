@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useContext, useEffect, useState } from "react";
 import login from "../assets/signup.avif";
 import { Auth } from "../Contexts/AuthContext";
@@ -27,9 +26,9 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Check if a role is selected
-    if (!role.isAdmin && !role.isPatient && !role.isDoctor) {
-      toast.error("Please select a role");
+    // Check if any field is empty (username, password, or role)
+    if (!userName || !password || (!role.isAdmin && !role.isPatient && !role.isDoctor)) {
+      toast.error("All fields are required");
       return;
     }
 
@@ -71,7 +70,6 @@ const Login = () => {
   };
 
   return (
-    // <div className="flex justify-center items-center gap-10 mt-7 h-screen">
     <div className="flex justify-center items-center gap-10 mt-7 h-[calc(100vh-2*5rem)]">
       <ToastContainer />
       <img className="w-1/3 h-auto" src={login} alt="Login" />
@@ -80,19 +78,40 @@ const Login = () => {
         <form className="shadow-2xl flex flex-col justify-center mt-4 items-center border-2 rounded-lg w-96 gap-6 py-7">
           <div className="flex flex-col justify-start items-center gap-4">
             <p className='mr-[185px]'>Enter username</p>
-            <input className='p-2 outline-none border-2 rounded-lg w-full' type="text" placeholder="username" value={userName} onChange={(e) => setUserName(e.target.value)} />
+            <input 
+              className='p-2 outline-none border-2 rounded-lg w-full' 
+              type="text" 
+              placeholder="username" 
+              value={userName} 
+              onChange={(e) => setUserName(e.target.value)} 
+            />
           </div>
           <div className="flex flex-col justify-center items-center gap-2">
             <p className="mr-[185px]">Enter password</p>
-            <input className='p-2 outline-none border-2 rounded-lg w-full' type="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <input 
+              className='p-2 outline-none border-2 rounded-lg w-full' 
+              type="password" 
+              placeholder="password" 
+              value={password} 
+              onChange={(e) => setPassword(e.target.value)} 
+            />
           </div>
-          <select name="role" className="p-2 rounded-lg" onChange={handleChange}>
+          <select 
+            name="role" 
+            className="p-2 rounded-lg" 
+            onChange={handleChange}
+          >
             <option value="">Select role</option>
             <option value="doctor">Doctor</option>
             <option value="patient">Patient</option>
             <option value="admin">Admin</option>
           </select>
-          <button className='shadow-lg hover:bg-blue-800 w-[315px] h-9 bg-blue-500 rounded-full text-white' onClick={handleSubmit}>Submit</button>
+          <button 
+            className='shadow-lg hover:bg-blue-800 w-[315px] h-9 bg-blue-500 rounded-full text-white' 
+            onClick={handleSubmit}
+          >
+            Submit
+          </button>
           <div className="">
             <Link to='/signup' className="text-pink-600 font-semibold ">Not Registered yet ? </Link>
           </div>

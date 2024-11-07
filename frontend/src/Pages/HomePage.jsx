@@ -6,6 +6,7 @@ import { useContext, useEffect } from "react";
 import { Auth } from "../Contexts/AuthContext";
 import { Link, useNavigate, Outlet } from "react-router-dom";
 import { Bell, Calendar, CircleArrowRightIcon, LayoutDashboardIcon, LayoutIcon, ListChecks, Pill, Stethoscope, User, UserPlus } from "lucide-react";
+import { ToastContainer } from "react-toastify";
 
 
 const HomePage = () => {
@@ -44,7 +45,10 @@ const HomePage = () => {
   console.log(items);
 
   return (
+    <>
+    <ToastContainer/>
     <div className="flex  " >
+      
       <div className="border shadow-2xl w-[25%] min-h-screen p-5 ">
         <hr className="my-5 shadow-2xl"></hr>
         {items.map((nav) => (
@@ -62,6 +66,7 @@ const HomePage = () => {
         <Outlet />
       </div>
     </div>
+    </>
   );
 };
 

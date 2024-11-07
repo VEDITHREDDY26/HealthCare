@@ -31,7 +31,7 @@ const register = async (req, res) => {
     // console.log("user",userName,password,email,roles);
 
     const hash = await bcrypt.hash(password, 10);
-    const user = new UserModel({ userName, password: hash, email, roles });
+    const user = new UserModel({ userName, password: hash, email, roles :{isPatient : true} });
     await user.save();
     res.status(200).json({ user, message: "User is added sucessfully" });
   } catch (error) {
