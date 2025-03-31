@@ -75,11 +75,11 @@ Celestial Care enhances healthcare accessibility by streamlining patient-doctor 
    ```
 4. Start the backend server:
    ```sh
-   npm run server
+   npm start
    ```
 5. Start the frontend:
    ```sh
-   npm start
+   npm run dev
    ```
 
 ## Technologies Used
@@ -89,14 +89,6 @@ Celestial Care enhances healthcare accessibility by streamlining patient-doctor 
 - **Database**: MongoDB
 - **Authentication**: JWT
 
-## Contributors
-
-- [Your Name]
-- [Other Contributors]
-
-## License
-
-This project is licensed under the MIT License.
 
 
 
