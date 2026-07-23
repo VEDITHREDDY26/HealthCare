@@ -3,6 +3,10 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 
+const authRoutes = require("./Routes/apis/authRoutes");
+const doctorsRoutes = require("./Routes/apis/doctors/doctorsRoutes");
+const patientAppointmentRoutes = require("./Routes/apis/patients/makeAppointment");
+
 const app = express();
 
 const allowedOrigins = [
@@ -16,8 +20,6 @@ const allowedOrigins = [
 app.use(
   cors({
     origin(origin, callback) {
-      console.log("Incoming request origin:", origin);
-
       if (!origin) {
         return callback(null, true);
       }
@@ -45,6 +47,22 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Request logger
+app.use((req, res, next) => {
+  const start = Date.now();
+
+  res.on("finish", () => {
+    console.log(
+      `${req.method} ${req.originalUrl} -> ${res.statusCode} ${
+        Date.now() - start
+      }ms`
+    );
+  });
+
+  next();
+});
+
+// Health routes
 app.get("/", (req, res) => {
   res.status(200).json({
     message: "Healthcare API is running",
@@ -57,13 +75,30 @@ app.get("/health", (req, res) => {
   });
 });
 
-/*
-Add your existing routes below.
+// Existing application routes
+app.use("/", authRoutes);
+app.use("/", doctorsRoutes);
+app.use("/", patientAppointmentRoutes);
 
-Example:
+// JSON 404 response
+app.use((req, res) => {
+  res.status(404).json({
+    success: false,
+    message: `Route not found: ${req.method} ${req.originalUrl}`,
+  });
+});
 
-const userRoutes = require("./routes/userRoutes");
-app.use("/api/users", userRoutes);
-*/
+// Error handler
+app.use((error, req, res, next) => {
+  console.error("Unhandled backend error:", error);
+
+  res.status(error.status || 500).json({
+    success: false,
+    message:
+      process.env.NODE_ENV === "production"
+        ? "Internal server error"
+        : error.message,
+  });
+});
 
 module.exports = app;
