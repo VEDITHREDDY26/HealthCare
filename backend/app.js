@@ -1,53 +1,41 @@
-const express = require('express');
-const cors = require('cors');
-const authRoutes = require("./Routes/apis/authRoutes")
-const doctorRoutes = require("./Routes/apis/doctors/doctorsRoutes")
-const patientRoutes = require('./Routes/apis/patients/makeAppointment')
+const cors = require("cors");
 
-const app = express();
-
-// CORS configuration
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:3000",
-  process.env.FRONTEND_URL
-].filter(Boolean);
+  process.env.FRONTEND_URL,
+]
+  .filter(Boolean)
+  .map((origin) => origin.replace(/\/$/, ""));
 
 app.use(
   cors({
     origin(origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
+      console.log("Incoming request origin:", origin);
+
+      // Allow Postman, curl, Render health checks and server-to-server requests.
+      if (!origin) {
         return callback(null, true);
       }
-      return callback(new Error("Origin not allowed by CORS"));
+
+      const normalizedOrigin = origin.replace(/\/$/, "");
+
+      const isAllowed =
+        allowedOrigins.includes(normalizedOrigin) ||
+        normalizedOrigin.endsWith(".vercel.app");
+
+      if (isAllowed) {
+        return callback(null, true);
+      }
+
+      console.error("Blocked CORS origin:", normalizedOrigin);
+
+      // Reject without generating repeated Express stack traces.
+      return callback(null, false);
     },
-    credentials: true
+
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
-
-//Middlewares 
-app.use(express.json())
-
-// Health-check routes
-app.get("/", (req, res) => {
-  res.status(200).json({
-    message: "Healthcare API is running"
-  });
-});
-
-app.get("/health", (req, res) => {
-  res.status(200).json({
-    status: "healthy"
-  });
-});
-
-//authenticationRoutes
-app.use("/",authRoutes);
-
-//doctorRoutes
-app.use("/",doctorRoutes)
-
-//patientRoutes
-app.use("/",patientRoutes)
-
-module.exports = app;
