@@ -3,6 +3,7 @@ import addDoc from "../assets/doctor.jpg";
 import {Auth} from '../Contexts/AuthContext'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { API_URL } from "../config/api";
 
 const AddDoctor = () => {
     const [userName, setUserName] = useState("");
@@ -19,7 +20,7 @@ const AddDoctor = () => {
         setLoading(true);
         
         try {
-          const response = await fetch('http://localhost:3000/addDoc', {
+          const response = await fetch(`${API_URL}/addDoc`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

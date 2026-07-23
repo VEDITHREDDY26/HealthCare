@@ -3,8 +3,6 @@ const jwt = require("jsonwebtoken");
 const UserModel = require("../Models/UserModel");
 const e = require("express");
 
-require("dotenv").config();
-
 const addAdmin = async(req,res) => {
   try {
     const {userName,password,email} = req.body;
@@ -73,7 +71,7 @@ const login = async (req, res) => {
     }
     res.status(200).json({ token,r });
   } catch (error) {
-    res.status(400).json(error);
+    res.status(400).json({ message: "Login failed" });
   }
 };
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { CiSearch } from 'react-icons/ci';
 import Card from './Card';
+import { API_URL } from '../config/api';
 
 const BookAppointment = () => {
     const [doctors, setDoctors] = useState([]);
@@ -11,7 +12,7 @@ const BookAppointment = () => {
     }, []);
 
     const fetchDoctors = async () => {
-        const response = await fetch(`http://localhost:3000/getDoctors`, {
+        const response = await fetch(`${API_URL}/getDoctors`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

@@ -4,6 +4,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import Loading from './Loading';
 import { Auth } from '../Contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { API_URL } from '../config/api';
 
 
 const TodayAppointments = () => {
@@ -18,7 +19,7 @@ const TodayAppointments = () => {
 
     const fetchAppointments = async () => {
         setLoading(true);
-        const response = await fetch('http://localhost:3000/getAppointments', {
+        const response = await fetch(`${API_URL}/getAppointments`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -37,7 +38,7 @@ const TodayAppointments = () => {
 
     const handleMarkAsCompleted =async (id) => {
       try {
-        const response = await fetch(`http://localhost:3000/markAsCompleted/${id}`, {
+        const response = await fetch(`${API_URL}/markAsCompleted/${id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',

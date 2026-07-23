@@ -21,13 +21,18 @@ jspm_packages/
 .npm
 
 # Environment variable files
+.env
+.env.local
+.env.production
 
+# Build output
+dist
+build
 
 # Mac OS files
 .DS_Store
 
 # Config or sensitive files
-
 
 # Ignore coverage results from test tools
 coverage/

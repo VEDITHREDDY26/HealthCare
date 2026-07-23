@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Auth } from "../Contexts/AuthContext";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { API_URL } from "../config/api";
 
 const Signup = () => {
   const [userName, setUserName] = useState("");
@@ -28,7 +29,7 @@ const Signup = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:3000/register`, {
+      const response = await fetch(`${API_URL}/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

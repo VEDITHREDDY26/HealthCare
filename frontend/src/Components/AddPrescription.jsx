@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Loading from "./Loading";
 import { Auth } from "../Contexts/AuthContext";
 import { useParams } from "react-router-dom";
+import { API_URL } from "../config/api";
 
 const AddPrescription = () => {
   const [medications, setMedications] = useState([{ name: "", dosage: "" }]);
@@ -48,7 +49,7 @@ const AddPrescription = () => {
     };
 
     try {
-      const response = await fetch(`http://localhost:3000/addPrescription/${id}`, { 
+      const response = await fetch(`${API_URL}/addPrescription/${id}`, { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

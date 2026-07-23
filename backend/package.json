@@ -1,18 +1,20 @@
 {
+  "name": "healthcare-backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
   "dependencies": {
-    "bcrypt": "^5.1.1",
+    "bcrypt": "^6.0.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.21.0",
-    "i": "^0.3.7",
     "jsonwebtoken": "^9.0.2",
     "moment-timezone": "^0.5.45",
-    "mongodb": "^6.20.0",
-    "mongoose": "^8.6.2",
-    "node": "^22.8.0",
-    "nodemon": "^3.1.4"
+    "mongoose": "^8.6.2"
   }
 }

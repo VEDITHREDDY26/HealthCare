@@ -3,6 +3,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { Auth } from '../Contexts/AuthContext'; // Adjust the import according to your project structure
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { API_URL } from '../config/api';
 
 const ConfirmationStatus = () => {
   const [notifications, setNotifications] = useState([]);
@@ -14,7 +15,7 @@ const ConfirmationStatus = () => {
 
   const fetchNotifications = async () => {
     try {
-      const response = await fetch('http://localhost:3000/getStatus', {
+      const response = await fetch(`${API_URL}/getStatus`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -40,7 +41,7 @@ const ConfirmationStatus = () => {
 
   const markNotificationAsSeen = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3000/markAsSeen/${id}`, {
+      const response = await fetch(`${API_URL}/markAsSeen/${id}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

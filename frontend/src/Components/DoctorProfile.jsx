@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import avatar from '../assets/doc.avif'
+import { API_URL } from '../config/api';
 const DoctorsList = () => {
   const [doctor, setDoctor] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -11,7 +12,7 @@ const DoctorsList = () => {
 
   const fetchDoctorProfile = async () => {
     try {
-      const response = await fetch('http://localhost:3000/profile', {
+      const response = await fetch(`${API_URL}/profile`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

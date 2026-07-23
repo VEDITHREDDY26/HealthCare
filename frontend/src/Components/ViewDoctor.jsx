@@ -7,6 +7,7 @@ import { Auth } from "../Contexts/AuthContext";
 import Loading from './Loading'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { API_URL } from '../config/api';
 
 const ViewDoctor = () => {
   const [details, setDetails] = useState(null); 
@@ -25,7 +26,7 @@ const ViewDoctor = () => {
       const token = user
       console.log(token);
       console.log(new Date(date).toISOString());
-      const book = await fetch(`http://localhost:3000/bookAppointment`,{
+      const book = await fetch(`${API_URL}/bookAppointment`,{
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -50,7 +51,7 @@ const ViewDoctor = () => {
       const token = user?.token; 
       // console.log(token);
       // console.log("Token:", token);
-      const response = await fetch(`http://localhost:3000/doctors/${id}`, {
+      const response = await fetch(`${API_URL}/doctors/${id}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -182,7 +183,7 @@ export default ViewDoctor;
 
 //       console.log(new Date(date).toISOString());  // Log the date in ISO format
 
-//       const response = await fetch(`http://localhost:3000/bookAppointment`, {
+//       const response = await fetch(`${API_URL}/bookAppointment`, {
 //         method: "POST",
 //         headers: {
 //           "Content-Type": "application/json",
@@ -215,7 +216,7 @@ export default ViewDoctor;
 //         return;
 //       }
 
-//       const response = await fetch(`http://localhost:3000/doctors/${id}`, {
+//       const response = await fetch(`${API_URL}/doctors/${id}`, {
 //         method: 'GET',
 //         headers: {
 //           'Content-Type': 'application/json',

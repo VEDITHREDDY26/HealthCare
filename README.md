@@ -242,9 +242,9 @@ _Intelligent health assistant providing personalized health tips, exercise routi
 
 ### Prerequisites
 
-- **Node.js** (v14 or higher)
-- **MongoDB** (Local installation or MongoDB Atlas)
-- **npm** or **yarn**
+- **Node.js** (v18 or higher)
+- **MongoDB** (MongoDB Atlas connection URI)
+- **npm**
 
 ### 1. Clone the Repository
 
@@ -262,27 +262,24 @@ cd backend
 npm install
 ```
 
-Create `.env` file in backend directory:
+Create `.env` file in backend directory (see `.env.example`):
 
 ```env
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
+URI=mongodb+srv://username:password@cluster.mongodb.net/dbname
 JWT_SECRET=your_jwt_secret_key
-JWT_EXPIRE=7d
-EMAIL_HOST=smtp.gmail.com
-EMAIL_PORT=587
-EMAIL_USER=your_email@gmail.com
-EMAIL_PASS=your_email_app_password
+FRONTEND_URL=http://localhost:5173
 NODE_ENV=development
+PORT=3000
 ```
 
 Start the backend server:
 
 ```bash
 npm run dev
+# or npm start
 ```
 
-Backend will run on `http://localhost:5000`
+Backend will run on `http://localhost:3000`
 
 ### 3. Frontend Setup
 
@@ -293,20 +290,71 @@ cd ../frontend
 npm install
 ```
 
-Create `.env` file in frontend directory:
+Create `.env` file in frontend directory (see `.env.example`):
 
 ```env
-REACT_APP_API_URL=http://localhost:5000/api
-REACT_APP_CHATBOT_API=your_chatbot_api_endpoint
+VITE_API_URL=http://localhost:3000
 ```
 
-Start the frontend:
+Start the frontend dev server:
 
 ```bash
-npm start
+npm run dev
 ```
 
-Application will open at `http://localhost:3000`
+Application will run at `http://localhost:5173`
+
+---
+
+## 🚀 Production Deployment Guide
+
+### MongoDB Atlas Setup
+
+1. Create or log in to your [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) account.
+2. Create or use an existing database user with read/write access.
+3. Under **Network Access**, add `0.0.0.0/0` (allow access from anywhere) so Render can connect.
+4. Copy the connection string (format: `mongodb+srv://<username>:<password>@<cluster>.mongodb.net/<database>?retryWrites=true&w=majority`).
+5. Store it as the `URI` environment variable in Render.
+
+### Render Backend Deployment
+
+**Settings:**
+- **Root Directory:** `backend`
+- **Build Command:** `npm install`
+- **Start Command:** `npm start`
+
+**Environment Variables:**
+```env
+URI=mongodb+srv://<username>:<password>@<cluster>.mongodb.net/<database>?retryWrites=true&w=majority
+JWT_SECRET=your_production_jwt_secret
+FRONTEND_URL=https://YOUR-VERCEL-FRONTEND.vercel.app
+NODE_ENV=production
+```
+
+### Vercel Frontend Deployment
+
+**Settings:**
+- **Root Directory:** `frontend`
+- **Build Command:** `npm run build`
+- **Output Directory:** `dist`
+
+**Environment Variable:**
+```env
+VITE_API_URL=https://YOUR-RENDER-BACKEND.onrender.com
+```
+
+### Step-by-Step Deployment Order
+
+1. **Deploy backend on Render.**
+2. **Test backend health check** by visiting `https://YOUR-RENDER-BACKEND.onrender.com/health` (should return `{"status":"healthy"}`).
+3. **Copy the Render backend URL.**
+4. **Set `VITE_API_URL` in Vercel** environment variables to your Render backend URL.
+5. **Deploy frontend on Vercel.**
+6. **Copy the Vercel frontend URL.**
+7. **Set `FRONTEND_URL` in Render** environment variables to your Vercel frontend URL.
+8. **Redeploy or restart** the Render web service to apply the updated CORS origin.
+9. **Test all application workflows** (Registration, Login, Booking, Prescriptions, Dashboards).
+
 
 ---
 

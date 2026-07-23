@@ -3,6 +3,7 @@ import { Bell, Check, CircleX } from "lucide-react";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { Auth } from "../Contexts/AuthContext";
+import { API_URL } from "../config/api";
 
 const NotificationAdmin = () => {
   const [appointments, setAppointments] = useState([]);
@@ -15,7 +16,7 @@ const NotificationAdmin = () => {
 
   const fetchAppointments = async () => {
     try {
-      const response = await fetch('http://localhost:3000/getAppointmentsForAdmin', {
+      const response = await fetch(`${API_URL}/getAppointmentsForAdmin`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -38,7 +39,7 @@ const NotificationAdmin = () => {
 
   const updateAppointmentStatus = async (appointmentId, status) => {
     try {
-      const response = await fetch(`http://localhost:3000/updateAppointment`, {
+      const response = await fetch(`${API_URL}/updateAppointment`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
