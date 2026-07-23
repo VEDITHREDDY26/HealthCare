@@ -1,4 +1,9 @@
+require("dotenv").config();
+
+const express = require("express");
 const cors = require("cors");
+
+const app = express();
 
 const allowedOrigins = [
   "http://localhost:5173",
@@ -13,7 +18,6 @@ app.use(
     origin(origin, callback) {
       console.log("Incoming request origin:", origin);
 
-      // Allow Postman, curl, Render health checks and server-to-server requests.
       if (!origin) {
         return callback(null, true);
       }
@@ -29,8 +33,6 @@ app.use(
       }
 
       console.error("Blocked CORS origin:", normalizedOrigin);
-
-      // Reject without generating repeated Express stack traces.
       return callback(null, false);
     },
 
@@ -39,3 +41,29 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.get("/", (req, res) => {
+  res.status(200).json({
+    message: "Healthcare API is running",
+  });
+});
+
+app.get("/health", (req, res) => {
+  res.status(200).json({
+    status: "healthy",
+  });
+});
+
+/*
+Add your existing routes below.
+
+Example:
+
+const userRoutes = require("./routes/userRoutes");
+app.use("/api/users", userRoutes);
+*/
+
+module.exports = app;
